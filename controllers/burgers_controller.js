@@ -1,4 +1,3 @@
-
 var db = require("../models");
 
 module.exports = function (app) {
@@ -13,6 +12,7 @@ module.exports = function (app) {
     });
 
     app.post("/", function (req, res) {
+        console.log("create a burger");
         db.Burger.create({
             burger_name: req.body.name
         }, {
@@ -22,7 +22,8 @@ module.exports = function (app) {
             });
     });
 
-    app.put("/:id", function (req, res) {
+    app.put("/burgers/:id", function (req, res) {
+        console.log("eating a burger");
         db.Burger.update({
             devoured: req.body.devoured
         }, {
@@ -35,6 +36,7 @@ module.exports = function (app) {
     });
 
     app.delete("/:id", function (req, res) {
+        console.log("eating a burger");
         db.Burger.destroy({
             where: {
                 id: req.params.id
